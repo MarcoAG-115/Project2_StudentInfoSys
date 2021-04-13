@@ -16,10 +16,13 @@ public class LoginGUI implements ActionListener {
     private static JPasswordField passwordText;
     private static JButton button;
     private static JLabel success;
-    public static void main(String[] args) {
 
-        JPanel panel = new JPanel();
-        JFrame frame = new JFrame();
+    JPanel panel = new JPanel();
+    JFrame frame = new JFrame();
+    //public static void main(String[] args) {
+    LoginGUI(){
+        //JPanel panel = new JPanel();
+        //JFrame frame = new JFrame();
         frame.setSize(400, 200);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
@@ -44,7 +47,8 @@ public class LoginGUI implements ActionListener {
 
         button = new JButton("Login");
         button.setBounds(10, 80, 80, 25);
-        button.addActionListener(new LoginGUI());
+        //button.addActionListener(new LoginGUI());
+        button.addActionListener(this);
         panel.add(button);
         
         success = new JLabel("");
@@ -71,6 +75,13 @@ public class LoginGUI implements ActionListener {
        }
        else{
             success.setText("Login Failed. Incorrect Username and Password.");
+       }
+
+       if(e.getSource() == button){
+          
+          frame.dispose();
+          StudentView myView = new StudentView();
+
        }
         
     }
