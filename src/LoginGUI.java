@@ -67,22 +67,26 @@ public class LoginGUI implements ActionListener {
        String password = passwordText.getText();
        //System.out.println(user + ", " + password);
 
-       if(user.equals("studentID") && password.equals("studentPass123")){
+       if(user.equals("studentID") && password.equals("studentPass123") && (e.getSource() == button)){
             success.setText("Login successful. Accessing Student View.");
+            frame.dispose();
+            StudentView myStudentView = new StudentView();
        }
-       else if(user.equals("instructorID") && password.equals("adminPass123")){
+       else if(user.equals("1") && password.equals("2") && (e.getSource() == button)){
             success.setText("Login successful. Accessing Administrator View.");
+            frame.dispose();
+            AdminView myAdminView = new AdminView();
        }
        else{
             success.setText("Login Failed. Incorrect Username and Password.");
        }
 
-       if(e.getSource() == button){
-          
-          frame.dispose();
-          StudentView myView = new StudentView();
-
-       }
+       //if(e.getSource() == button){
+       //   
+       //   frame.dispose();
+       //   StudentView myView = new StudentView();
+       //   
+       //}
         
     }
 }
