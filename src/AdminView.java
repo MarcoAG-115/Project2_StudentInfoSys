@@ -19,6 +19,8 @@ public class AdminView implements ActionListener{
     private static JLabel askLastName;
     private static JTextField studentLN;
     private static JButton addButton;
+    private static JButton addGradeButton;
+    private static JButton changeGradeButton;
 
 
     JFrame frame = new JFrame();
@@ -70,6 +72,16 @@ public class AdminView implements ActionListener{
         addButton.addActionListener(this);
         panel.add(addButton);
 
+        addGradeButton = new JButton("Add Grade");
+        addGradeButton.setBounds(50, 290, 110, 25);
+        addGradeButton.addActionListener(this);
+        panel.add(addGradeButton);
+
+        changeGradeButton = new JButton("Change Grade");
+        changeGradeButton.setBounds(150, 290, 150, 25);
+        changeGradeButton.addActionListener(this);
+        panel.add(changeGradeButton);
+
         frame.setVisible(true);
     }
 
@@ -90,6 +102,20 @@ public class AdminView implements ActionListener{
 
             }
             catch(Exception ex){}
+
+        }
+
+        if (e.getSource() == addGradeButton){
+
+            //frame.dispose();
+            AddGrade addGrade = new AddGrade();
+
+        }
+
+        if (e.getSource() == changeGradeButton){
+
+            //frame.dispose();
+            ChangeGrade changeGrade = new ChangeGrade();
 
         }
 

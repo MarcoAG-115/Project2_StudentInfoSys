@@ -67,7 +67,7 @@ public class LoginGUI implements ActionListener {
        String password = passwordText.getText();
        //System.out.println(user + ", " + password);
 
-       if(user.equals("studentID") && password.equals("studentPass123") && (e.getSource() == button)){
+       if(user.equals("3") && password.equals("4") && (e.getSource() == button)){
             success.setText("Login successful. Accessing Student View.");
             frame.dispose();
             StudentView myStudentView = new StudentView();
