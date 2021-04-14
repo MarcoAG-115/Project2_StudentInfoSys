@@ -1,3 +1,12 @@
 
  mg123, Mark, Godsend
  wb456, Wilford, Hellspawn
+ ts123, Tony, Stark
+ sr456, Steve, Rogers
+ bb111, James, Barnes
+ j117, John, 117
+ ds160, Doctor, Strange
+ bm808, Blue, Man
+ jd767, Jane, Doe
+ bm479, Bat, Man
+ to745, Thor, Odinson

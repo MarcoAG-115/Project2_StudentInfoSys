@@ -122,14 +122,16 @@ public class AddGrade implements ActionListener {
         String cn = course.getText();
         String gd = grade.getText();
         String cd = credits.getText();
+        String path = "/Users/marco/Documents/Documents/COMP_3700/Project/Project2_StudentInfoSys/src/" + id + "/";
 
         if (e.getSource() == addButton){
 
             try
             {
-            File f = new File(id + cn + currentSeason + year + ".txt");
+            File f = new File(path + id + cn + currentSeason + year + ".txt");
+            //File f = new File(id + cn + currentSeason + year + ".txt");
             PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
-            pw.append("\n " + gd + ", " + cd);
+            pw.append(gd + cd);
             pw.close();
 
             }

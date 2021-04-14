@@ -93,8 +93,12 @@ public class AdminView implements ActionListener{
 
         if (e.getSource() == addButton){
 
+            String path = "/Users/marco/Documents/Documents/COMP_3700/Project/Project2_StudentInfoSys/src/" + id;
+            File file = new File(path);
+            if (!file.exists()){
             try
             {
+            file.mkdir();
             File f = new File("Database.txt");
             PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
             pw.append("\n " + id + ", " + fn + ", " + ln);
@@ -102,7 +106,7 @@ public class AdminView implements ActionListener{
 
             }
             catch(Exception ex){}
-
+            }
         }
 
         if (e.getSource() == addGradeButton){
