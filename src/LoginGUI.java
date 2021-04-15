@@ -1,5 +1,7 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -66,14 +68,56 @@ public class LoginGUI implements ActionListener {
        
        String user = userText.getText();
        String password = passwordText.getText();
-       //System.out.println(user + ", " + password);
+       String copy1 = "";;
+       String copy2 = "";
 
-       if(user.equals("rw987") && password.equals("4") && (e.getSource() == button)){
+       try
+       {
+          BufferedReader sl = new BufferedReader(new FileReader("StudentLogins.txt"));
+          String line1;
+          while ((line1 = sl.readLine()) != null){
+      
+              if ((line1.contains(user)) && (line1.contains(password))){
+                  copy1 = line1;
+              }
+          }
+          sl.close();
+
+          BufferedReader al = new BufferedReader(new FileReader("AdminLogins.txt"));
+          String line2;
+          while ((line2 = al.readLine()) != null){
+      
+              if ((line2.contains(user)) && (line2.contains(password))){
+                  copy2 = line2;
+              }
+          }
+          al.close();
+
+       }
+       catch(Exception ex){}
+
+       String aUser = "";
+       String aPass = "";
+       String sUser = "";
+       String sPass = "";
+
+       if (copy1.equals("")){
+
+          aUser = copy2.substring(0, 5);
+          aPass = copy2.substring(6, copy2.length());
+       }
+       else{
+
+          sUser = copy1.substring(0, 5);
+          sPass = copy1.substring(6, copy1.length());
+       }
+
+       if(user.equals(sUser) && password.equals(sPass) && (e.getSource() == button)){
             success.setText("Login successful. Accessing Student View.");
             frame.dispose();
             StudentView myStudentView = new StudentView(user);
        }
-       else if(user.equals("1") && password.equals("2") && (e.getSource() == button)){
+       else if(user.equals(aUser) && password.equals(aPass) && (e.getSource() == button)){
             success.setText("Login successful. Accessing Administrator View.");
             frame.dispose();
             AdminView myAdminView = new AdminView();
@@ -81,13 +125,6 @@ public class LoginGUI implements ActionListener {
        else{
             success.setText("Login Failed. Incorrect Username and Password.");
        }
-
-       //if(e.getSource() == button){
-       //   
-       //   frame.dispose();
-       //   StudentView myView = new StudentView();
-       //   
-       //}
         
     }
 

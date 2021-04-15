@@ -106,7 +106,10 @@ public class AllStudentInfo {
                                 gradesArray.add(count, grade);
                                 creditsArray.add(count, credit);
                                 count++;
-                                totalCredits = copy.substring(3, copy.length());
+                                if (!(copy.substring(3, copy.length()).equals(""))){
+
+                                    totalCredits = copy.substring(3, copy.length());
+                                }
 
                                 File f = new File(newPath + "/" + userID + "AllFall" + semesterYear + "Info.txt");
                                 PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
@@ -119,7 +122,10 @@ public class AllStudentInfo {
                                 gradesArray.add(count, grade);
                                 creditsArray.add(count, credit);
                                 count++;
-                                totalCredits = copy.substring(3, copy.length());
+                                if (!(copy.substring(3, copy.length()).equals(""))){
+
+                                    totalCredits = copy.substring(3, copy.length());
+                                }
 
                                 File f = new File(newPath + "/" + userID + "AllFall" + semesterYear + "Info.txt");
                                 PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
@@ -130,7 +136,10 @@ public class AllStudentInfo {
                         }
                         else if ((copy.charAt(2) == 'W') || (copy.charAt(2) == 'N')){
 
-                            totalCredits = copy.substring(3, copy.length());
+                            if (!(copy.substring(3, copy.length()).equals(""))){
+
+                                totalCredits = copy.substring(3, copy.length());
+                            }
 
                             File f = new File(newPath + "/" + userID + "AllFall" + semesterYear + "Info.txt");
                             PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
@@ -143,7 +152,10 @@ public class AllStudentInfo {
                             gradesArray.add(count, grade);
                             creditsArray.add(count, credit);
                             count++;
-                            totalCredits = copy.substring(3, copy.length());
+                            if (!(copy.substring(3, copy.length()).equals(""))){
+
+                                totalCredits = copy.substring(3, copy.length());
+                            }
 
                             File f = new File(newPath + "/" + userID + "AllFall" + semesterYear + "Info.txt");
                             PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
@@ -195,7 +207,10 @@ public class AllStudentInfo {
                                 gradesArray.add(count, grade);
                                 creditsArray.add(count, credit);
                                 count++;
-                                totalCredits = copy.substring(3, copy.length());
+                                if (!(copy.substring(3, copy.length()).equals(""))){
+
+                                    totalCredits = copy.substring(3, copy.length());
+                                }
 
                                 File f = new File(newPath + "/" + userID + "AllSummer" + semesterYear + "Info.txt");
                                 PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
@@ -208,7 +223,10 @@ public class AllStudentInfo {
                                 gradesArray.add(count, grade);
                                 creditsArray.add(count, credit);
                                 count++;
-                                totalCredits = copy.substring(3, copy.length());
+                                if (!(copy.substring(3, copy.length()).equals(""))){
+
+                                    totalCredits = copy.substring(3, copy.length());
+                                }
 
                                 File f = new File(newPath + "/" + userID + "AllSummer" + semesterYear + "Info.txt");
                                 PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
@@ -219,7 +237,10 @@ public class AllStudentInfo {
                         }
                         else if ((copy.charAt(2) == 'W') || (copy.charAt(2) == 'N')){
 
-                            totalCredits = copy.substring(3, copy.length());
+                            if (!(copy.substring(3, copy.length()).equals(""))){
+
+                                totalCredits = copy.substring(3, copy.length());
+                            }
 
                             File f = new File(newPath + "/" + userID + "AllSummer" + semesterYear + "Info.txt");
                             PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
@@ -232,7 +253,10 @@ public class AllStudentInfo {
                             gradesArray.add(count, grade);
                             creditsArray.add(count, credit);
                             count++;
-                            totalCredits = copy.substring(3, copy.length());
+                            if (!(copy.substring(3, copy.length()).equals(""))){
+
+                                totalCredits = copy.substring(3, copy.length());
+                            }
 
                             File f = new File(newPath + "/" + userID + "AllSummer" + semesterYear + "Info.txt");
                             PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
@@ -284,7 +308,10 @@ public class AllStudentInfo {
                                 gradesArray.add(count, grade);
                                 creditsArray.add(count, credit);
                                 count++;
-                                totalCredits = copy.substring(3, copy.length());
+                                if (!(copy.substring(3, copy.length()).equals(""))){
+
+                                    totalCredits = copy.substring(3, copy.length());
+                                }
 
                                 File f = new File(newPath + "/" + userID + "AllSpring" + semesterYear + "Info.txt");
                                 PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
@@ -297,7 +324,10 @@ public class AllStudentInfo {
                                 gradesArray.add(count, grade);
                                 creditsArray.add(count, credit);
                                 count++;
-                                totalCredits = copy.substring(3, copy.length());
+                                if (!(copy.substring(3, copy.length()).equals(""))){
+
+                                    totalCredits = copy.substring(3, copy.length());
+                                }
 
                                 File f = new File(newPath + "/" + userID + "AllSpring" + semesterYear + "Info.txt");
                                 PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
@@ -308,7 +338,10 @@ public class AllStudentInfo {
                         }
                         else if ((copy.charAt(2) == 'W') || (copy.charAt(2) == 'N')){
 
-                            totalCredits = copy.substring(3, copy.length());
+                            if (!(copy.substring(3, copy.length()).equals(""))){
+
+                                totalCredits = copy.substring(3, copy.length());
+                            }
 
                             File f = new File(newPath + "/" + userID + "AllSpring" + semesterYear + "Info.txt");
                             PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
@@ -321,7 +354,10 @@ public class AllStudentInfo {
                             gradesArray.add(count, grade);
                             creditsArray.add(count, credit);
                             count++;
-                            totalCredits = copy.substring(3, copy.length());
+                            if (!(copy.substring(3, copy.length()).equals(""))){
+
+                                totalCredits = copy.substring(3, copy.length());
+                            }
 
                             File f = new File(newPath + "/" + userID + "AllSpring" + semesterYear + "Info.txt");
                             PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));

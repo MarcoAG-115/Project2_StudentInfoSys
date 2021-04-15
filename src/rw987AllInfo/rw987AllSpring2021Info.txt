@@ -2,11 +2,19 @@
 
 
  SPRING 2021
+ ------- Ethics ------- Grade: A ------- Credits: 1 ------- Status: I ------- 
+
+
+ SPRING 2021
  ------- BuildingSci ------- Grade: F ------- Credits: 2 ------- Status: N ------- 
 
 
  SPRING 2021
- ------- Chemistry ------- Grade: C ------- Credits: 4 ------- Status: W ------- 
+ ------- Calculus ------- Grade: A ------- Credits: 4 ------- Status: I ------- 
+
+
+ SPRING 2021
+ ------- Chemistry ------- Grade: B ------- Credits: 4 ------- Status: P ------- 
 
 
  SPRING 2021

@@ -121,11 +121,24 @@ public class DisplayInfo {
                 @Override
                 public int compare(Object a, Object b){
                     
-                    if (((File) a).lastModified() < ((File) b).lastModified()){
+                    // if (((File) a).lastModified() < ((File) b).lastModified()){
+
+                    //     return -1;
+                    // }
+                    // else if (((File) a).lastModified() > ((File) b).lastModified()){
+
+                    //     return 1;
+                    // }
+                    // else{
+
+                    //     return 0;
+                    // }
+
+                    if (((File) a).length() < ((File) b).length()){
 
                         return -1;
                     }
-                    else if (((File) a).lastModified() > ((File) b).lastModified()){
+                    else if (((File) a).length() > ((File) b).length()){
 
                         return 1;
                     }
