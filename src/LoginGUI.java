@@ -21,6 +21,7 @@ public class LoginGUI implements ActionListener {
     JFrame frame = new JFrame();
     //public static void main(String[] args) {
     LoginGUI(){
+
         //JPanel panel = new JPanel();
         //JFrame frame = new JFrame();
         frame.setSize(400, 200);
@@ -67,10 +68,10 @@ public class LoginGUI implements ActionListener {
        String password = passwordText.getText();
        //System.out.println(user + ", " + password);
 
-       if(user.equals("3") && password.equals("4") && (e.getSource() == button)){
+       if(user.equals("to745") && password.equals("4") && (e.getSource() == button)){
             success.setText("Login successful. Accessing Student View.");
             frame.dispose();
-            StudentView myStudentView = new StudentView();
+            StudentView myStudentView = new StudentView(user);
        }
        else if(user.equals("1") && password.equals("2") && (e.getSource() == button)){
             success.setText("Login successful. Accessing Administrator View.");
@@ -89,4 +90,8 @@ public class LoginGUI implements ActionListener {
        //}
         
     }
+
+
+
+
 }
