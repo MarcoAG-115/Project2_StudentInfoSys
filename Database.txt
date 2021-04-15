@@ -10,3 +10,5 @@
  jd767, Jane, Doe
  bm479, Bat, Man
  to745, Thor, Odinson
+ ms456, Morgan, Stark
+ rw987, Riri, Williams, 101

@@ -23,6 +23,8 @@ public class ChangeGrade implements ActionListener {
     private static JTextField course;
     private static JLabel askForGrade;
     private static JTextField grade;
+    private static JLabel askForStatus;
+    private static JTextField status;
     private static JButton changeGradeButton;
 
     Date date = new Date();
@@ -88,8 +90,16 @@ public class ChangeGrade implements ActionListener {
         grade.setBounds(200, 240, 165, 25);
         panel.add(grade);
 
+        askForStatus = new JLabel("Enter the course status: ");
+        askForStatus.setBounds(200, 280, 250, 25);
+        panel.add(askForStatus);
+       
+        status = new JTextField(20);
+        status.setBounds(200, 300, 165, 25);
+        panel.add(status);
+
         changeGradeButton = new JButton("Change Grade");
-        changeGradeButton.setBounds(200, 350, 110, 25);
+        changeGradeButton.setBounds(200, 350, 200, 25);
         changeGradeButton.addActionListener(this);
         panel.add(changeGradeButton);
 
@@ -102,6 +112,7 @@ public class ChangeGrade implements ActionListener {
         String id = studentID.getText();
         String cn = course.getText();
         String gd = grade.getText();
+        String s = status.getText();
         String path = "/Users/marco/Documents/Documents/COMP_3700/Project/Project2_StudentInfoSys/src/" + id + "/";
 
         if (e.getSource() == changeGradeButton){
@@ -123,7 +134,9 @@ public class ChangeGrade implements ActionListener {
                 }
                 br.close();
                 String credits = Character.toString(copy.charAt(1));
-                String replaceWith = gd + credits;
+                String totalCredits = "";
+                totalCredits = copy.substring(3, copy.length());
+                String replaceWith = gd + credits + s + totalCredits;
                 String inputStr = inputBuffer.toString();
                 inputStr = inputStr.replace(copy, replaceWith);
 

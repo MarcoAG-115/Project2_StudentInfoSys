@@ -24,7 +24,10 @@ public class AddGrade implements ActionListener {
     private static JTextField grade;
     private static JLabel askForCredits;
     private static JTextField credits;
+    private static JLabel askForStatus;
+    private static JTextField status;
     private static JButton addButton;
+    public String totalCredits;
 
     Date date = new Date();
     LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -36,7 +39,9 @@ public class AddGrade implements ActionListener {
     JLabel label = new JLabel("Add Grade");
     JPanel panel = new JPanel();
 
-    AddGrade(){
+    AddGrade(String cd){
+
+        totalCredits = cd;
 
         label.setBounds(200, 0, 250, 50);
         //label.setFont(new Font(null, Font.PLAIN, 25));
@@ -91,8 +96,8 @@ public class AddGrade implements ActionListener {
         course.setBounds(200, 180, 165, 25);
         panel.add(course);
 
-        askForGrade = new JLabel("Enter the course grade: ");
-        askForGrade.setBounds(200, 220, 250, 25);
+        askForGrade = new JLabel("Enter the course grade(A/B/C/D/F): ");
+        askForGrade.setBounds(200, 220, 300, 25);
         panel.add(askForGrade);
        
         grade = new JTextField(20);
@@ -107,8 +112,16 @@ public class AddGrade implements ActionListener {
         credits.setBounds(200, 300, 165, 25);
         panel.add(credits);
 
+        askForStatus = new JLabel("Optional - Enter course status(W/P/N/I): ");
+        askForStatus.setBounds(200, 340, 300, 25);
+        panel.add(askForStatus);
+       
+        status = new JTextField(20);
+        status.setBounds(200, 360, 165, 25);
+        panel.add(status);
+
         addButton = new JButton("Add");
-        addButton.setBounds(200, 350, 110, 25);
+        addButton.setBounds(200, 410, 110, 25);
         addButton.addActionListener(this);
         panel.add(addButton);
 
@@ -122,6 +135,7 @@ public class AddGrade implements ActionListener {
         String cn = course.getText();
         String gd = grade.getText();
         String cd = credits.getText();
+        String s = status.getText();
         String path = "/Users/marco/Documents/Documents/COMP_3700/Project/Project2_StudentInfoSys/src/" + id + "/";
 
         if (e.getSource() == addButton){
@@ -131,7 +145,7 @@ public class AddGrade implements ActionListener {
             File f = new File(path + id + cn + currentSeason + year + ".txt");
             //File f = new File(id + cn + currentSeason + year + ".txt");
             PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
-            pw.append(gd + cd);
+            pw.append(gd + cd + s + totalCredits);
             pw.close();
 
             }

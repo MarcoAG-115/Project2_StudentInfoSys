@@ -94,7 +94,7 @@ public class DisplayInfo {
 
         //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
-        frame.setSize(800, 800);
+        frame.setSize(950, 850);
 
         panel.setLayout(null);
 

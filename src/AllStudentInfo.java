@@ -11,27 +11,27 @@ import java.time.ZoneId;
 public class AllStudentInfo {
 
 
-    // Date date = new Date();
-    // LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-    // int year = localDate.getYear();
-    // int month = localDate.getMonthValue();
-    // String currentSeason = "";
+    Date date = new Date();
+    LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    int year = localDate.getYear();
+    int month = localDate.getMonthValue();
+    String currentSeason = "";
 
     AllStudentInfo(String userID){
 
-        // if ((month <= 12) && (month >= 8)){
+        if ((month <= 12) && (month >= 8)){
 
-        //     currentSeason = "Fall";
+            currentSeason = "Fall";
     
-        // }
-        // else if ((month <= 8) && (month >= 5)){
+        }
+        else if ((month <= 8) && (month >= 5)){
     
-        //     currentSeason = "Summer";
-        // }
-        // else {
+            currentSeason = "Summer";
+        }
+        else {
 
-        //     currentSeason = "Spring";
-        // }
+            currentSeason = "Spring";
+        }
 
         File folder = new File("/Users/marco/Documents/Documents/COMP_3700/Project/Project2_StudentInfoSys/src/" + userID + "/");
         File[] listOfFiles = folder.listFiles();
@@ -56,6 +56,7 @@ public class AllStudentInfo {
         newFolder.mkdir();
         ArrayList<String> gradesArray = new ArrayList<String>();
         ArrayList<String> creditsArray = new ArrayList<String>();
+        String totalCredits = "";
         int count = 0; 
 
         for (File file : listOfFiles){
@@ -90,15 +91,72 @@ public class AllStudentInfo {
                         br.close();
                         String credit = Character.toString(copy.charAt(1));
                         String grade = Character.toString(copy.charAt(0));
-                        gradesArray.add(count, grade);
-                        creditsArray.add(count, credit);
-                        count++;
+                        String status = Character.toString(copy.charAt(2));
+                        // gradesArray.add(count, grade);
+                        // creditsArray.add(count, credit);
+                        // count++;
+
+                        if (copy.charAt(2) == 'I'){
+
+                            int tempYear = Integer.parseInt(semesterYear);
+                            if (tempYear < year){
+
+                                grade = "F";
+
+                                gradesArray.add(count, grade);
+                                creditsArray.add(count, credit);
+                                count++;
+                                totalCredits = copy.substring(3, copy.length());
+
+                                File f = new File(newPath + "/" + userID + "AllFall" + semesterYear + "Info.txt");
+                                PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
+                                pw.append("\n\n\n " + "FALL " + semesterYear.toUpperCase());
+                                pw.append("\n" +" ------- " + courseName + " ------- Grade: " + grade + " ------- Credits: " + credit + " ------- Status: " + status + " ------- ");
+                                pw.close();
+                            }
+                            else{
+
+                                gradesArray.add(count, grade);
+                                creditsArray.add(count, credit);
+                                count++;
+                                totalCredits = copy.substring(3, copy.length());
+
+                                File f = new File(newPath + "/" + userID + "AllFall" + semesterYear + "Info.txt");
+                                PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
+                                pw.append("\n\n\n " + "FALL " + semesterYear.toUpperCase());
+                                pw.append("\n" +" ------- " + courseName + " ------- Grade: " + grade + " ------- Credits: " + credit + " ------- Status: " + status + " ------- ");
+                                pw.close();
+                            }
+                        }
+                        else if ((copy.charAt(2) == 'W') || (copy.charAt(2) == 'N')){
+
+                            totalCredits = copy.substring(3, copy.length());
+
+                            File f = new File(newPath + "/" + userID + "AllFall" + semesterYear + "Info.txt");
+                            PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
+                            pw.append("\n\n\n " + "FALL " + semesterYear.toUpperCase());
+                            pw.append("\n" +" ------- " + courseName + " ------- Grade: " + grade + " ------- Credits: " + credit + " ------- Status: " + status + " ------- ");
+                            pw.close();
+                        }
+                        else{
+
+                            gradesArray.add(count, grade);
+                            creditsArray.add(count, credit);
+                            count++;
+                            totalCredits = copy.substring(3, copy.length());
+
+                            File f = new File(newPath + "/" + userID + "AllFall" + semesterYear + "Info.txt");
+                            PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
+                            pw.append("\n\n\n " + "FALL " + semesterYear.toUpperCase());
+                            pw.append("\n" +" ------- " + courseName + " ------- Grade: " + grade + " ------- Credits: " + credit + " ------- Status: " + status + " ------- ");
+                            pw.close();
+                        }
                         
-                        File f = new File(newPath + "/" + userID + "AllFall" + semesterYear + "Info.txt");
-                        PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
-                        pw.append("\n\n\n " + "FALL " + semesterYear.toUpperCase());
-                        pw.append("\n" +" ------- " + courseName + " ------- Grade: " + grade + " ------- Credits: " + credit + " ------- ");
-                        pw.close();
+                        // File f = new File(newPath + "/" + userID + "AllFall" + semesterYear + "Info.txt");
+                        // PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
+                        // pw.append("\n\n\n " + "FALL " + semesterYear.toUpperCase());
+                        // pw.append("\n" +" ------- " + courseName + " ------- Grade: " + grade + " ------- Credits: " + credit + " ------- Status: " + status + " ------- ");
+                        // pw.close();
         
                     }
                     catch(Exception ex){}
@@ -122,15 +180,72 @@ public class AllStudentInfo {
                         br.close();
                         String credit = Character.toString(copy.charAt(1));
                         String grade = Character.toString(copy.charAt(0));
-                        gradesArray.add(count, grade);
-                        creditsArray.add(count, credit);
-                        count++;
+                        String status = Character.toString(copy.charAt(2));
+                        // gradesArray.add(count, grade);
+                        // creditsArray.add(count, credit);
+                        // count++;
+
+                        if (copy.charAt(2) == 'I'){
+
+                            int tempYear = Integer.parseInt(semesterYear);
+                            if (tempYear < year){
+
+                                grade = "F";
+
+                                gradesArray.add(count, grade);
+                                creditsArray.add(count, credit);
+                                count++;
+                                totalCredits = copy.substring(3, copy.length());
+
+                                File f = new File(newPath + "/" + userID + "AllSummer" + semesterYear + "Info.txt");
+                                PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
+                                pw.append("\n\n\n " + "SUMMER " + semesterYear.toUpperCase());
+                                pw.append("\n" +" ------- " + courseName + " ------- Grade: " + grade + " ------- Credits: " + credit + " ------- Status: " + status + " ------- ");
+                                pw.close();
+                            }
+                            else{
+
+                                gradesArray.add(count, grade);
+                                creditsArray.add(count, credit);
+                                count++;
+                                totalCredits = copy.substring(3, copy.length());
+
+                                File f = new File(newPath + "/" + userID + "AllSummer" + semesterYear + "Info.txt");
+                                PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
+                                pw.append("\n\n\n " + "SUMMER " + semesterYear.toUpperCase());
+                                pw.append("\n" +" ------- " + courseName + " ------- Grade: " + grade + " ------- Credits: " + credit + " ------- Status: " + status + " ------- ");
+                                pw.close();
+                            }
+                        }
+                        else if ((copy.charAt(2) == 'W') || (copy.charAt(2) == 'N')){
+
+                            totalCredits = copy.substring(3, copy.length());
+
+                            File f = new File(newPath + "/" + userID + "AllSummer" + semesterYear + "Info.txt");
+                            PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
+                            pw.append("\n\n\n " + "SUMMER " + semesterYear.toUpperCase());
+                            pw.append("\n" +" ------- " + courseName + " ------- Grade: " + grade + " ------- Credits: " + credit + " ------- Status: " + status + " ------- ");
+                            pw.close();
+                        }
+                        else{
+
+                            gradesArray.add(count, grade);
+                            creditsArray.add(count, credit);
+                            count++;
+                            totalCredits = copy.substring(3, copy.length());
+
+                            File f = new File(newPath + "/" + userID + "AllSummer" + semesterYear + "Info.txt");
+                            PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
+                            pw.append("\n\n\n " + "SUMMER " + semesterYear.toUpperCase());
+                            pw.append("\n" +" ------- " + courseName + " ------- Grade: " + grade + " ------- Credits: " + credit + " ------- Status: " + status + " ------- ");
+                            pw.close();
+                        }
                         
-                        File f = new File(newPath + "/" + userID + "AllSummer" + semesterYear + "Info.txt");
-                        PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
-                        pw.append("\n\n\n " + "SUMMER " + semesterYear.toUpperCase());
-                        pw.append("\n" +" ------- " + courseName + " ------- Grade: " + grade + " ------- Credits: " + credit + " ------- ");
-                        pw.close();
+                        // File f = new File(newPath + "/" + userID + "AllSummer" + semesterYear + "Info.txt");
+                        // PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
+                        // pw.append("\n\n\n " + "SUMMER " + semesterYear.toUpperCase());
+                        // pw.append("\n" +" ------- " + courseName + " ------- Grade: " + grade + " ------- Credits: " + credit + " ------- Status: " + status + " ------- ");
+                        // pw.close();
         
                     }
                     catch(Exception ex){}
@@ -154,15 +269,72 @@ public class AllStudentInfo {
                         br.close();
                         String credit = Character.toString(copy.charAt(1));
                         String grade = Character.toString(copy.charAt(0));
-                        gradesArray.add(count, grade);
-                        creditsArray.add(count, credit);
-                        count++;
+                        String status = Character.toString(copy.charAt(2));
+                        // gradesArray.add(count, grade);
+                        // creditsArray.add(count, credit);
+                        // count++;
+
+                        if (copy.charAt(2) == 'I'){
+
+                            int tempYear = Integer.parseInt(semesterYear);
+                            if (tempYear < year){
+
+                                grade = "F";
+
+                                gradesArray.add(count, grade);
+                                creditsArray.add(count, credit);
+                                count++;
+                                totalCredits = copy.substring(3, copy.length());
+
+                                File f = new File(newPath + "/" + userID + "AllSpring" + semesterYear + "Info.txt");
+                                PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
+                                pw.append("\n\n\n " + "SPRING " + semesterYear.toUpperCase());
+                                pw.append("\n" +" ------- " + courseName + " ------- Grade: " + grade + " ------- Credits: " + credit + " ------- Status: " + status + " ------- ");
+                                pw.close();
+                            }
+                            else{
+
+                                gradesArray.add(count, grade);
+                                creditsArray.add(count, credit);
+                                count++;
+                                totalCredits = copy.substring(3, copy.length());
+
+                                File f = new File(newPath + "/" + userID + "AllSpring" + semesterYear + "Info.txt");
+                                PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
+                                pw.append("\n\n\n " + "SPRING " + semesterYear.toUpperCase());
+                                pw.append("\n" +" ------- " + courseName + " ------- Grade: " + grade + " ------- Credits: " + credit + " ------- Status: " + status + " ------- ");
+                                pw.close();
+                            }
+                        }
+                        else if ((copy.charAt(2) == 'W') || (copy.charAt(2) == 'N')){
+
+                            totalCredits = copy.substring(3, copy.length());
+
+                            File f = new File(newPath + "/" + userID + "AllSpring" + semesterYear + "Info.txt");
+                            PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
+                            pw.append("\n\n\n " + "SPRING " + semesterYear.toUpperCase());
+                            pw.append("\n" +" ------- " + courseName + " ------- Grade: " + grade + " ------- Credits: " + credit + " ------- Status: " + status + " ------- ");
+                            pw.close();
+                        }
+                        else{
+
+                            gradesArray.add(count, grade);
+                            creditsArray.add(count, credit);
+                            count++;
+                            totalCredits = copy.substring(3, copy.length());
+
+                            File f = new File(newPath + "/" + userID + "AllSpring" + semesterYear + "Info.txt");
+                            PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
+                            pw.append("\n\n\n " + "SPRING " + semesterYear.toUpperCase());
+                            pw.append("\n" +" ------- " + courseName + " ------- Grade: " + grade + " ------- Credits: " + credit + " ------- Status: " + status + " ------- ");
+                            pw.close();
+                        }
                         
-                        File f = new File(newPath + "/" + userID + "AllSpring" + semesterYear + "Info.txt");
-                        PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
-                        pw.append("\n\n\n " + "SPRING " + semesterYear.toUpperCase());
-                        pw.append("\n" +" ------- " + courseName + " ------- Grade: " + grade + " ------- Credits: " + credit + " ------- ");
-                        pw.close();
+                        // File f = new File(newPath + "/" + userID + "AllSpring" + semesterYear + "Info.txt");
+                        // PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
+                        // pw.append("\n\n\n " + "SPRING " + semesterYear.toUpperCase());
+                        // pw.append("\n" +" ------- " + courseName + " ------- Grade: " + grade + " ------- Credits: " + credit + " ------- ");
+                        // pw.close();
         
                     }
                     catch(Exception ex){}
@@ -171,14 +343,14 @@ public class AllStudentInfo {
                 
         }
 
-        int totalCredits = 0;
+        int totalCreditsCompleted = 0;
         double gpa = 0.0;
         int temp = 0;
         double gradePoints = 0.0;
         for (int i = 0; i < gradesArray.size(); i++){
 
             temp = Integer.parseInt(creditsArray.get(i));
-            totalCredits = temp + totalCredits;
+            totalCreditsCompleted = temp + totalCreditsCompleted;
 
             String tempGrade = "";
             tempGrade = gradesArray.get(i);
@@ -204,18 +376,19 @@ public class AllStudentInfo {
             }
 
         }
-        gpa = (double) gradePoints / totalCredits;
+        gpa = (double) gradePoints / totalCreditsCompleted;
         gpa = Math.round(gpa * 100.0)/100.0;
 
         try
         {
             File f = new File(newPath + "/" + userID + "AllInfo.txt");
             PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
-            pw.append("\n" + "TOTAL GPA: " + gpa + "\n" + "TOTAL CREDITS COMPLETED: " + totalCredits);
+            pw.append("\n" + "TOTAL GPA: " + gpa + "\n" + "TOTAL CREDITS COMPLETED: " + totalCreditsCompleted + " / " + totalCredits);
             pw.close();
 
         }
         catch(Exception ex){}
+
     }
 
 

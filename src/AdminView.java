@@ -18,6 +18,8 @@ public class AdminView implements ActionListener{
     private static JTextField studentFN;
     private static JLabel askLastName;
     private static JTextField studentLN;
+    private static JLabel askCreditsNeeded;
+    private static JTextField totalCredits;
     private static JButton addButton;
     private static JButton addGradeButton;
     private static JButton changeGradeButton;
@@ -67,18 +69,26 @@ public class AdminView implements ActionListener{
         studentLN.setBounds(100, 180, 165, 25);
         panel.add(studentLN);
 
+        askCreditsNeeded = new JLabel("Enter total credits needed to graduate: ");
+        askCreditsNeeded.setBounds(100, 210, 250, 25);
+        panel.add(askCreditsNeeded);
+        
+        totalCredits = new JTextField(20);
+        totalCredits.setBounds(100, 230, 165, 25);
+        panel.add(totalCredits);
+
         addButton = new JButton("Add Student");
-        addButton.setBounds(100, 230, 110, 25);
+        addButton.setBounds(100, 280, 110, 25);
         addButton.addActionListener(this);
         panel.add(addButton);
 
         addGradeButton = new JButton("Add Grade");
-        addGradeButton.setBounds(50, 290, 110, 25);
+        addGradeButton.setBounds(50, 310, 110, 25);
         addGradeButton.addActionListener(this);
         panel.add(addGradeButton);
 
         changeGradeButton = new JButton("Change Grade");
-        changeGradeButton.setBounds(150, 290, 150, 25);
+        changeGradeButton.setBounds(150, 310, 150, 25);
         changeGradeButton.addActionListener(this);
         panel.add(changeGradeButton);
 
@@ -90,6 +100,7 @@ public class AdminView implements ActionListener{
         String id = studentID.getText();
         String fn = studentFN.getText();
         String ln = studentLN.getText();
+        String cd = totalCredits.getText();
 
         if (e.getSource() == addButton){
 
@@ -101,7 +112,7 @@ public class AdminView implements ActionListener{
             file.mkdir();
             File f = new File("Database.txt");
             PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
-            pw.append("\n " + id + ", " + fn + ", " + ln);
+            pw.append("\n " + id + ", " + fn + ", " + ln + ", " + cd);
             pw.close();
 
             }
@@ -112,7 +123,7 @@ public class AdminView implements ActionListener{
         if (e.getSource() == addGradeButton){
 
             //frame.dispose();
-            AddGrade addGrade = new AddGrade();
+            AddGrade addGrade = new AddGrade(cd);
 
         }
 

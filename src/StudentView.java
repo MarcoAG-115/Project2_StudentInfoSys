@@ -56,23 +56,23 @@ public class StudentView implements ActionListener{
 
       //frame.setVisible(true);
       
-      subframe.setSize(300, 300);
-      subframe.setLayout(null);
+      //subframe.setSize(300, 300);
+      //subframe.setLayout(null);
       
-      menubar.add(studentInfo);
-      menubar.add(transcript);
+      //menubar.add(studentInfo);
+      //menubar.add(transcript);
       studentInfo.add(f);
       
-      frame.setJMenuBar(menubar);
+      //frame.setJMenuBar(menubar);
 
       frame.setVisible(true);
       
-      f.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e)
-            {
-                subframe.setVisible(true);
-            }
-      });
+      // f.addActionListener(new ActionListener(){
+      //       public void actionPerformed(ActionEvent e)
+      //       {
+      //           subframe.setVisible(true);
+      //       }
+      // });
 
       //JOptionPane.showMessageDialog(null, user, "stuff " + "more ", JOptionPane.INFORMATION_MESSAGE);
        
