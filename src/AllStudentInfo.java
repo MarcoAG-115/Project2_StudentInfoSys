@@ -11,27 +11,27 @@ import java.time.ZoneId;
 public class AllStudentInfo {
 
 
-    Date date = new Date();
-    LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-    int year = localDate.getYear();
-    int month = localDate.getMonthValue();
-    String currentSeason = "";
+    // Date date = new Date();
+    // LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    // int year = localDate.getYear();
+    // int month = localDate.getMonthValue();
+    // String currentSeason = "";
 
     AllStudentInfo(String userID){
 
-        if ((month <= 12) && (month >= 8)){
+        // if ((month <= 12) && (month >= 8)){
 
-            currentSeason = "Fall";
+        //     currentSeason = "Fall";
     
-        }
-        else if ((month <= 8) && (month >= 5)){
+        // }
+        // else if ((month <= 8) && (month >= 5)){
     
-            currentSeason = "Summer";
-        }
-        else {
+        //     currentSeason = "Summer";
+        // }
+        // else {
 
-            currentSeason = "Spring";
-        }
+        //     currentSeason = "Spring";
+        // }
 
         File folder = new File("/Users/marco/Documents/Documents/COMP_3700/Project/Project2_StudentInfoSys/src/" + userID + "/");
         File[] listOfFiles = folder.listFiles();
@@ -211,7 +211,7 @@ public class AllStudentInfo {
         {
             File f = new File(newPath + "/" + userID + "AllInfo.txt");
             PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
-            pw.append("\n " + "TOTAL GPA: " + gpa + "\n" + "TOTAL CREDITS COMPLETED: " + totalCredits);
+            pw.append("\n" + "TOTAL GPA: " + gpa + "\n" + "TOTAL CREDITS COMPLETED: " + totalCredits);
             pw.close();
 
         }

@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 public class StudentView implements ActionListener{
 
    private static JButton infoButton;
+   private static JButton tButton;
    public String userID;
     
    JFrame frame = new JFrame("Main Frame");
@@ -43,10 +44,15 @@ public class StudentView implements ActionListener{
 
       panel.setLayout(null);
 
-      infoButton = new JButton("Show All Info");
+      infoButton = new JButton("Gather Info");
       infoButton.setBounds(100, 50, 200, 25);
       infoButton.addActionListener(this);
       panel.add(infoButton);
+
+      tButton = new JButton("Get All Info");
+      tButton.setBounds(100, 110, 200, 25);
+      tButton.addActionListener(this);
+      panel.add(tButton);
 
       //frame.setVisible(true);
       
@@ -82,9 +88,16 @@ public class StudentView implements ActionListener{
       if (e.getSource() == infoButton){
 
          //frame.dispose();
+
          AllStudentInfo allStudentInfo = new AllStudentInfo(userID);
+         //DisplayInfo displayInfo = new DisplayInfo(userID);
          //JOptionPane.showMessageDialog(null, userID, "stuff " + "more ", JOptionPane.INFORMATION_MESSAGE);
 
+     }
+
+     if (e.getSource() == tButton){
+
+         DisplayInfo displayInfo = new DisplayInfo(userID);
      }
       
    }
