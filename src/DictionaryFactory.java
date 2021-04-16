@@ -8,7 +8,8 @@ public class DictionaryFactory {
 	private CourseDictionary cd;
 	private InformationDictionary id;
 	
-	//The 3 filenames correspond to 3 files with a semicolon-delimited list of dictionary entries.
+	//The 3 filenames correspond to 3 files with a semicolon-delimited list of dictionary entries. 
+	//Each entry is a pair [value],[id]
 	public DictionaryFactory(String studentFile, String courseFile, String informationFile) {
 		sd = new StudentDictionary();
 		cd = new CourseDictionary();
@@ -24,14 +25,13 @@ public class DictionaryFactory {
 		try {
 			in = new Scanner(f);
 		} catch (FileNotFoundException e) {
-			System.out.println("Error: file " + filename + " not found\n");
+			System.out.println("Error: File " + filename + " not found\n");
 			return d;
 		}
-		int i = in.nextInt();
 		String text = in.nextLine();
 		String[] pairs = text.split(";");
-		for(int j = 0;j < i;j++) {
-			String[] temp = pairs[j].split(",");
+		for(int i = 0;i < pairs.length;i++) {
+			String[] temp = pairs[i].split(",");
 			d.addEntry(temp[0], Integer.parseInt(temp[1]));
 		}
 		in.close();
