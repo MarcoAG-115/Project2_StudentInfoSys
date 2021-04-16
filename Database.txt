@@ -14,3 +14,6 @@
  rw987, Riri, Williams, 101
  sh666, Samuel, Hayden, 122
  ns878, New, Student, 55
+ jb919, Josh, Bye, 135
+ jl970, John, Black, 77
+ jl746, Jess, Lee, 142

@@ -2,6 +2,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileReader;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.awt.BorderLayout;
@@ -35,7 +37,11 @@ public class DisplayInfo {
         StringBuilder sb = new StringBuilder();
         String allInfo = "";
         try{
-            String path = "/Users/marco/Documents/Documents/COMP_3700/Project/Project2_StudentInfoSys/src/" + userID + "AllInfo";
+            Path p1 = Paths.get("AdminLogin.txt");
+            Path p2 = Paths.get((p1.toAbsolutePath()).toString());
+            //String newPath = p2.getParent() + "/src/" + userID + "/";
+            String path = p2.getParent() + "/src/" + userID + "AllInfo";
+            //String path = "/Users/marco/Documents/Documents/COMP_3700/Project/Project2_StudentInfoSys/src/" + userID + "AllInfo";
             File folder = new File(path);
             File[] listOfFiles = folder.listFiles();
 

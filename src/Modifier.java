@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.PrintWriter;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -120,7 +122,11 @@ public class Modifier implements ActionListener {
         String cn = course.getText();
         String gd = grade.getText();
         String s = status.getText();
-        String path = "/Users/marco/Documents/Documents/COMP_3700/Project/Project2_StudentInfoSys/src/" + id + "/";
+
+        Path p1 = Paths.get("AdminLogin.txt");
+        Path p2 = Paths.get((p1.toAbsolutePath()).toString());
+        String path = p2.getParent() + "/src/" + id + "/";
+        //String path = "/Users/marco/Documents/Documents/COMP_3700/Project/Project2_StudentInfoSys/src/" + id + "/";
 
         if (e.getSource() == changeGradeButton){
 

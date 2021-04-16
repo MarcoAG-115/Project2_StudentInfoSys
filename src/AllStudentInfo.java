@@ -3,6 +3,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.PrintWriter;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
 import java.time.LocalDate;
@@ -34,10 +36,14 @@ public class AllStudentInfo {
             currentSeason = "Spring";
         }
 
-        File folder = new File("/Users/marco/Documents/Documents/COMP_3700/Project/Project2_StudentInfoSys/src/" + userID + "/");
+        Path p1 = Paths.get(userID);
+        //File folder = new File("/Users/marco/Documents/Documents/COMP_3700/Project/Project2_StudentInfoSys/src/" + userID + "/");
+        File folder = new File((p1.toAbsolutePath()).toString() + "/src/");
         File[] listOfFiles = folder.listFiles();
-        String path = "/Users/marco/Documents/Documents/COMP_3700/Project/Project2_StudentInfoSys/src/" + userID + "/";
-        String newPath = "/Users/marco/Documents/Documents/COMP_3700/Project/Project2_StudentInfoSys/src/" + userID + "AllInfo";
+        //String path = "/Users/marco/Documents/Documents/COMP_3700/Project/Project2_StudentInfoSys/src/" + userID + "/";
+        String path = (p1.toAbsolutePath()).toString() + "/src/";
+        //String newPath = "/Users/marco/Documents/Documents/COMP_3700/Project/Project2_StudentInfoSys/src/" + userID + "AllInfo";
+        String newPath = path + userID + "AllInfo";
 
         File oldFolder = new File(newPath);
         File[] oldFiles = oldFolder.listFiles();

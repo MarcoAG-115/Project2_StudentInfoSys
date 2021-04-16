@@ -3,6 +3,8 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -111,7 +113,10 @@ public class AdminViewController implements ActionListener{
 
         if (e.getSource() == addButton){
 
-            String path = "/Users/marco/Documents/Documents/COMP_3700/Project/Project2_StudentInfoSys/src/" + id;
+            Path p1 = Paths.get("AdminLogins.txt");
+            String temp = (p1.toAbsolutePath()).toString();
+            Path p2 = Paths.get(temp);
+            String path = p2.getParent() + "/src/" + id;
             File file = new File(path);
             if (!file.exists()){
             try
