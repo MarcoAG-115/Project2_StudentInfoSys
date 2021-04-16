@@ -11,7 +11,7 @@ import javax.swing.JMenuItem;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class StudentView implements ActionListener{
+public class StudentViewController implements ActionListener{
 
    private static JButton infoButton;
    private static JButton tButton;
@@ -28,7 +28,7 @@ public class StudentView implements ActionListener{
    
    
 
-   StudentView(String user){
+   StudentViewController(String user){
 
       userID = user;
    

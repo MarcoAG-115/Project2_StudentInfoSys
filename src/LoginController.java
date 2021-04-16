@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class LoginGUI implements ActionListener {
+public class LoginController implements ActionListener {
 
     private static JLabel userLabel;
     private static JTextField userText;
@@ -22,7 +22,7 @@ public class LoginGUI implements ActionListener {
     JPanel panel = new JPanel();
     JFrame frame = new JFrame();
     //public static void main(String[] args) {
-    LoginGUI(){
+        LoginController(){
 
         //JPanel panel = new JPanel();
         //JFrame frame = new JFrame();
@@ -115,12 +115,12 @@ public class LoginGUI implements ActionListener {
        if(user.equals(sUser) && password.equals(sPass) && (e.getSource() == button)){
             success.setText("Login successful. Accessing Student View.");
             frame.dispose();
-            StudentView myStudentView = new StudentView(user);
+            StudentViewController myStudentView = new StudentViewController(user);
        }
        else if(user.equals(aUser) && password.equals(aPass) && (e.getSource() == button)){
             success.setText("Login successful. Accessing Administrator View.");
             frame.dispose();
-            AdminView myAdminView = new AdminView();
+            AdminViewController myAdminView = new AdminViewController();
        }
        else{
             success.setText("Login Failed. Incorrect Username and Password.");

@@ -5,7 +5,7 @@ public class Main {
     
     public static void main(String[] args){
 
-        LoginGUI loginGUI = new LoginGUI();
+        LoginController loginGUI = new LoginController();
 
         // Scanner sc = new Scanner(System.in);
         // System.out.println("Enter student ID: ");

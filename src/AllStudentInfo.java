@@ -10,6 +10,7 @@ import java.time.ZoneId;
 
 public class AllStudentInfo {
 
+    public String userID;
 
     Date date = new Date();
     LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -17,7 +18,7 @@ public class AllStudentInfo {
     int month = localDate.getMonthValue();
     String currentSeason = "";
 
-    AllStudentInfo(String userID){
+    public void gatherInfo(String userID){
 
         if ((month <= 12) && (month >= 8)){
 
@@ -424,6 +425,13 @@ public class AllStudentInfo {
 
         }
         catch(Exception ex){}
+    }
+
+    AllStudentInfo(String user){
+
+        userID = user;
+
+        gatherInfo(userID);
 
     }
 

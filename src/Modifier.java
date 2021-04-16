@@ -1,11 +1,13 @@
-import java.util.Date;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,37 +15,31 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class AddGrade implements ActionListener {
+public class Modifier implements ActionListener {
 
-    private static JLabel semester;
     private static JLabel askForID;
     private static JTextField studentID;
     private static JLabel askForCourse;
     private static JTextField course;
     private static JLabel askForGrade;
     private static JTextField grade;
-    private static JLabel askForCredits;
-    private static JTextField credits;
     private static JLabel askForStatus;
     private static JTextField status;
-    private static JButton addButton;
-    public String totalCredits;
+    private static JButton changeGradeButton;
 
     Date date = new Date();
     LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     int year = localDate.getYear();
     int month = localDate.getMonthValue();
     String currentSeason = "";
-    
+
     JFrame frame = new JFrame();
-    JLabel label = new JLabel("Add Grade");
+    JLabel label = new JLabel("Change Grade");
     JPanel panel = new JPanel();
 
-    AddGrade(String cd){
+    public void changeGrade(){
 
-        totalCredits = cd;
-
-        label.setBounds(200, 0, 250, 50);
+        label.setBounds(100, 0, 250, 50);
         //label.setFont(new Font(null, Font.PLAIN, 25));
 
         frame.add(label);
@@ -56,27 +52,17 @@ public class AddGrade implements ActionListener {
 
         panel.setLayout(null);
 
-
         if ((month <= 12) && (month >= 8)){
 
-            semester = new JLabel("Fall " + year);
-            semester.setBounds(200, 20, 250, 50);
-            panel.add(semester);
             currentSeason = "Fall";
     
         }
         else if ((month <= 8) && (month >= 5)){
     
-            semester = new JLabel("Summer " + year);
-            semester.setBounds(200, 20, 250, 50);
-            panel.add(semester);
             currentSeason = "Summer";
         }
         else {
 
-            semester = new JLabel("Spring " + year);
-            semester.setBounds(200, 20, 250, 50);
-            panel.add(semester);
             currentSeason = "Spring";
         }
 
@@ -96,36 +82,35 @@ public class AddGrade implements ActionListener {
         course.setBounds(200, 180, 165, 25);
         panel.add(course);
 
-        askForGrade = new JLabel("Enter the course grade(A/B/C/D/F): ");
-        askForGrade.setBounds(200, 220, 300, 25);
+        askForGrade = new JLabel("Enter the course grade: ");
+        askForGrade.setBounds(200, 220, 250, 25);
         panel.add(askForGrade);
        
         grade = new JTextField(20);
         grade.setBounds(200, 240, 165, 25);
         panel.add(grade);
 
-        askForCredits = new JLabel("Enter the credits assigned to this course: ");
-        askForCredits.setBounds(200, 280, 300, 25);
-        panel.add(askForCredits);
-       
-        credits = new JTextField(20);
-        credits.setBounds(200, 300, 165, 25);
-        panel.add(credits);
-
-        askForStatus = new JLabel("Optional - Enter course status(W/P/N/I): ");
-        askForStatus.setBounds(200, 340, 300, 25);
+        askForStatus = new JLabel("Enter the course status: ");
+        askForStatus.setBounds(200, 280, 250, 25);
         panel.add(askForStatus);
        
         status = new JTextField(20);
-        status.setBounds(200, 360, 165, 25);
+        status.setBounds(200, 300, 165, 25);
         panel.add(status);
 
-        addButton = new JButton("Add");
-        addButton.setBounds(200, 410, 110, 25);
-        addButton.addActionListener(this);
-        panel.add(addButton);
+        changeGradeButton = new JButton("Change Grade");
+        changeGradeButton.setBounds(200, 350, 200, 25);
+        changeGradeButton.addActionListener(this);
+        panel.add(changeGradeButton);
 
         frame.setVisible(true);
+    }
+
+    Modifier(){
+
+        changeGrade();
+
+
     }
 
     @Override
@@ -134,24 +119,42 @@ public class AddGrade implements ActionListener {
         String id = studentID.getText();
         String cn = course.getText();
         String gd = grade.getText();
-        String cd = credits.getText();
         String s = status.getText();
         String path = "/Users/marco/Documents/Documents/COMP_3700/Project/Project2_StudentInfoSys/src/" + id + "/";
 
-        if (e.getSource() == addButton){
+        if (e.getSource() == changeGradeButton){
 
             try
             {
-            File f = new File(path + id + cn + currentSeason + year + ".txt");
-            //File f = new File(id + cn + currentSeason + year + ".txt");
-            PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
-            pw.append(gd + cd + s + totalCredits);
-            pw.close();
+                BufferedReader br = new BufferedReader(new FileReader(path + id + cn + currentSeason + year + ".txt"));
+                StringBuffer inputBuffer = new StringBuffer();
+                String line;
+                String copy = "";
 
+                while ((line = br.readLine()) != null){
+                    
+                    if (line != null){
+                        copy = line;
+                    }
+                    inputBuffer.append(line);
+                    inputBuffer.append('\n');
+                }
+                br.close();
+                String credits = Character.toString(copy.charAt(1));
+                String totalCredits = "";
+                totalCredits = copy.substring(3, copy.length());
+                String replaceWith = gd + credits + s + totalCredits;
+                String inputStr = inputBuffer.toString();
+                inputStr = inputStr.replace(copy, replaceWith);
+
+                FileOutputStream fileOut = new FileOutputStream(path + id + cn + currentSeason + year + ".txt");
+                fileOut.write(inputStr.getBytes());
+                fileOut.close();
             }
             catch(Exception ex){}
 
         }
         
     }
+    
 }

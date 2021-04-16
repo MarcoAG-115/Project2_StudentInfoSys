@@ -16,83 +16,15 @@ import javax.swing.JTextPane;
 
 public class DisplayInfo {
 
-    private static JLabel info;
+    //private static JLabel info;
     public String userID;
     
     JPanel panel = new JPanel();
     JFrame frame = new JFrame();
     JTextPane tp = new JTextPane();
 
-    // public static class FileNameComparator implements Comparator<File>{
+    public void showInfo(String userID){
 
-    //     public int compare(File a, File b){
-    
-    //         String aName = a.getName();
-    //         String bName = b.getName();
-    //         int aSeason = 0;
-    //         int bSeason = 0;
-    //         int aYear = 0;
-    //         int bYear = 0;
-    
-    //         if (aName.contains("Fall")){
-    
-    //             aSeason = 3;
-    //             aYear = Integer.parseInt(aName.substring(aName.length()-8, aName.length()-4));
-    //         }
-    //         else if (aName.contains("Spring")){
-    
-    //             aSeason = 1;
-    //             aYear = Integer.parseInt(aName.substring(aName.length()-8, aName.length()-4));
-    //         }
-    //         else if (aName.contains("Summer")){
-    
-    //             aSeason = 2;
-    //             aYear = Integer.parseInt(aName.substring(aName.length()-8, aName.length()-4));
-    //         }
-    //         else {
-    
-    //             return -1;
-    //         }
-            
-    //         if (bName.contains("Fall")){
-    
-    //             bSeason = 3;
-    //             bYear = Integer.parseInt(bName.substring(bName.length()-8, bName.length()-4));
-    //         }
-    //         else if (bName.contains("Spring")){
-    
-    //             bSeason = 1;
-    //             bYear = Integer.parseInt(bName.substring(bName.length()-8, bName.length()-4));
-    //         }
-    //         else if (bName.contains("Summer")){
-    
-    //             bSeason = 2;
-    //             bYear = Integer.parseInt(bName.substring(bName.length()-8, bName.length()-4));
-    //         }
-    //         else{
-    
-    //             return 1;
-    //         }
-    
-    //         if (aYear == bYear){
-    
-    //             return Integer.compare(aSeason, bSeason);
-    //         }
-    //         else {
-    
-    //             return Integer.compare(aYear, bYear);
-    //         }
-    
-    
-    //     }
-        
-    // }
-
-    DisplayInfo(String user){
-
-        userID = user;
-
-        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
         frame.setSize(950, 850);
 
@@ -188,6 +120,13 @@ public class DisplayInfo {
         frame.setLocationRelativeTo(null);
 
         frame.setVisible(true);
+    }
+
+    DisplayInfo(String user){
+
+        userID = user;
+
+        showInfo(userID);
     }
     
 }

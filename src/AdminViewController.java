@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class AdminView implements ActionListener{
+public class AdminViewController implements ActionListener{
 
     private static JLabel askForID;
     private static JTextField studentID;
@@ -29,7 +29,7 @@ public class AdminView implements ActionListener{
     JLabel label = new JLabel("Welcome to the Administrator Menu.");
     JPanel panel = new JPanel();
 
-    AdminView(){
+    public void addStudent(){
 
         label.setBounds(100, 0, 250, 50);
         //label.setFont(new Font(null, Font.PLAIN, 25));
@@ -95,6 +95,13 @@ public class AdminView implements ActionListener{
         frame.setVisible(true);
     }
 
+    AdminViewController(){
+
+        addStudent();
+
+
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         String id = studentID.getText();
@@ -123,14 +130,14 @@ public class AdminView implements ActionListener{
         if (e.getSource() == addGradeButton){
 
             //frame.dispose();
-            AddGrade addGrade = new AddGrade(cd);
+            NewCourse addGrade = new NewCourse(cd);
 
         }
 
         if (e.getSource() == changeGradeButton){
 
             //frame.dispose();
-            ChangeGrade changeGrade = new ChangeGrade();
+            Modifier changeGrade = new Modifier();
 
         }
 
