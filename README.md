@@ -8,15 +8,15 @@ This program is demo / prototype created by translating software models and desi
 
 Download the the zip file that contains all the repository files and unzip in a desired location.
 
-##Usage
+## Usage
 
 Open the files in an editor or IDE capable of running Java and any of its toolkits, such as Java Swing. Run the program and use the existing administrator and student logins found in StudentLogins.txt or AdminLogins.txt. New logins can be added manually by editing these text files. For testing certain features like displaying grades, utilize the existing student logins or create a new student and add courses, along with corresponding info, before attempting to display their info.
 
-##Creation
+## Creation
 
 The majority of this program was created in Visual Studio Code on a MacBook Pro running macOS Big Sur 11.2.3.
 
-###Visual Studio Code Extensions
+### Visual Studio Code Extensions
 
 The following extensions were used in the creation of this program:
 - Debugger for Java by Microsoft
@@ -26,7 +26,7 @@ The following extensions were used in the creation of this program:
 - Maven for Java by Microsoft
 - Project Manager for Java by Microsoft
 - 
-##Resources & Tutorials
+## Resources & Tutorials
 
 The following resources and guides were used to create the program.
 - https://www.youtube.com/watch?v=iE8tZ0hn2Ws
