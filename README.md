@@ -6,7 +6,7 @@ This program is demo / prototype created by translating software models and desi
 
 ## Installation
 
-Download the the zip file that contains all the repository files and unzip in a desired location.
+Download the zip file that contains all the repository files and unzip in a desired location.
 
 ## Usage
 
