@@ -17,3 +17,5 @@
  jb919, Josh, Bye, 135
  jl970, John, Black, 77
  jl746, Jess, Lee, 142
+ tt909, Timothy, Thames, 136
+ jj767, John, James, 154

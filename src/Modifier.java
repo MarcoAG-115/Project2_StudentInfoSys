@@ -42,15 +42,14 @@ public class Modifier implements ActionListener {
     public void changeGrade(){
 
         label.setBounds(100, 0, 250, 50);
-        //label.setFont(new Font(null, Font.PLAIN, 25));
+        
 
         frame.add(label);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
         frame.setSize(620, 620);
-        //frame.setLayout(null);
-        //frame.setVisible(true);
+        
 
         panel.setLayout(null);
 

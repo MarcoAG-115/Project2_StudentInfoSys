@@ -18,7 +18,7 @@ import javax.swing.JTextPane;
 
 public class DisplayInfo {
 
-    //private static JLabel info;
+    
     public String userID;
     
     JPanel panel = new JPanel();
@@ -59,18 +59,7 @@ public class DisplayInfo {
                 @Override
                 public int compare(Object a, Object b){
                     
-                    // if (((File) a).lastModified() < ((File) b).lastModified()){
-
-                    //     return -1;
-                    // }
-                    // else if (((File) a).lastModified() > ((File) b).lastModified()){
-
-                    //     return 1;
-                    // }
-                    // else{
-
-                    //     return 0;
-                    // }
+                 
 
                     if (((File) a).length() < ((File) b).length()){
 

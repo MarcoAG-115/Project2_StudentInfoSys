@@ -21,11 +21,10 @@ public class LoginController implements ActionListener {
 
     JPanel panel = new JPanel();
     JFrame frame = new JFrame();
-    //public static void main(String[] args) {
+    
         LoginController(){
 
-        //JPanel panel = new JPanel();
-        //JFrame frame = new JFrame();
+        
         frame.setSize(400, 200);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
@@ -50,7 +49,7 @@ public class LoginController implements ActionListener {
 
         button = new JButton("Login");
         button.setBounds(10, 80, 80, 25);
-        //button.addActionListener(new LoginGUI());
+       
         button.addActionListener(this);
         panel.add(button);
         
@@ -60,7 +59,7 @@ public class LoginController implements ActionListener {
 
         frame.setVisible(true);
 
-        //JPanel panel = new JPanel();
+        
     }
 
     @Override
@@ -101,30 +100,49 @@ public class LoginController implements ActionListener {
        String sUser = "";
        String sPass = "";
 
-       if (copy1.equals("")){
+       if (copy2.equals(user + "-" + password)){
 
           aUser = copy2.substring(0, 5);
           aPass = copy2.substring(6, copy2.length());
-       }
-       else{
-
-          sUser = copy1.substring(0, 5);
-          sPass = copy1.substring(6, copy1.length());
-       }
-
-       if(user.equals(sUser) && password.equals(sPass) && (e.getSource() == button)){
-            success.setText("Login successful. Accessing Student View.");
-            frame.dispose();
-            StudentViewController myStudentView = new StudentViewController(user);
-       }
-       else if(user.equals(aUser) && password.equals(aPass) && (e.getSource() == button)){
+          
+          if ((!(user.equals(aUser))) && (e.getSource() == button)){
+            success.setText("Login Failed. Incorrect Username and Password.");
+          }
+          else if ((!(password.equals(aPass))) && (e.getSource() == button)){
+            success.setText("Login Failed. Incorrect Username and Password.");
+          }
+          else if((user.equals(aUser) && password.equals(aPass)) && (e.getSource() == button)){
             success.setText("Login successful. Accessing Administrator View.");
             frame.dispose();
             AdminViewController myAdminView = new AdminViewController();
-       }
-       else{
+          }
+          else if (e.getSource() == button){
             success.setText("Login Failed. Incorrect Username and Password.");
+          }
        }
+       else if (copy1.equals(user + "-" + password)){
+
+          sUser = copy1.substring(0, 5);
+          sPass = copy1.substring(6, copy1.length());
+          
+          if ((!(user.equals(sUser))) && (e.getSource() == button)){
+            success.setText("Login Failed. Incorrect Username and Password.");
+          }
+          else if ((!(password.equals(sPass))) && (e.getSource() == button)){
+            success.setText("Login Failed. Incorrect Username and Password.");
+          }
+          else if((user.equals(sUser) && password.equals(sPass)) && (e.getSource() == button)){
+            success.setText("Login successful. Accessing Student View.");
+            frame.dispose();
+            StudentViewController myStudentView = new StudentViewController(user);
+          }
+          else if (e.getSource() == button){
+            success.setText("Login Failed. Incorrect Username and Password.");
+          }
+       }
+       else if (e.getSource() == button){
+        success.setText("Login Failed. Incorrect Username and Password.");
+      }
         
     }
 

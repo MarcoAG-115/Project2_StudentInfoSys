@@ -134,14 +134,14 @@ public class AdminViewController implements ActionListener{
 
         if (e.getSource() == addGradeButton){
 
-            //frame.dispose();
+            
             NewCourse addGrade = new NewCourse(cd);
 
         }
 
         if (e.getSource() == changeGradeButton){
 
-            //frame.dispose();
+            
             Modifier changeGrade = new Modifier();
 
         }

@@ -36,14 +36,15 @@ public class AllStudentInfo {
             currentSeason = "Spring";
         }
 
-        Path p1 = Paths.get(userID);
-        //File folder = new File("/Users/marco/Documents/Documents/COMP_3700/Project/Project2_StudentInfoSys/src/" + userID + "/");
-        File folder = new File((p1.toAbsolutePath()).toString() + "/src/");
+        Path p1 = Paths.get("AdminLogin.txt");
+        Path p2 = Paths.get((p1.toAbsolutePath()).toString());
+        String path = p2.getParent() + "/src/" + userID + "/";
+        
+        File folder = new File(p2.getParent() + "/src/" + userID);
         File[] listOfFiles = folder.listFiles();
         //String path = "/Users/marco/Documents/Documents/COMP_3700/Project/Project2_StudentInfoSys/src/" + userID + "/";
-        String path = (p1.toAbsolutePath()).toString() + "/src/";
         //String newPath = "/Users/marco/Documents/Documents/COMP_3700/Project/Project2_StudentInfoSys/src/" + userID + "AllInfo";
-        String newPath = path + userID + "AllInfo";
+        String newPath = p2.getParent() + "/src/" + userID + "AllInfo";
 
         File oldFolder = new File(newPath);
         File[] oldFiles = oldFolder.listFiles();
@@ -77,7 +78,6 @@ public class AllStudentInfo {
                 int endCNforS = end - 14;
                 int startSeason = end - 8;
                 int endSeason = end - 4;
-                //String season = fileName.substring(start, (end - 8));
 
                 if (fileName.contains("Fall")){
                     
@@ -99,9 +99,7 @@ public class AllStudentInfo {
                         String credit = Character.toString(copy.charAt(1));
                         String grade = Character.toString(copy.charAt(0));
                         String status = Character.toString(copy.charAt(2));
-                        // gradesArray.add(count, grade);
-                        // creditsArray.add(count, credit);
-                        // count++;
+                      
 
                         if (copy.charAt(2) == 'I'){
 
@@ -171,11 +169,7 @@ public class AllStudentInfo {
                             pw.close();
                         }
                         
-                        // File f = new File(newPath + "/" + userID + "AllFall" + semesterYear + "Info.txt");
-                        // PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
-                        // pw.append("\n\n\n " + "FALL " + semesterYear.toUpperCase());
-                        // pw.append("\n" +" ------- " + courseName + " ------- Grade: " + grade + " ------- Credits: " + credit + " ------- Status: " + status + " ------- ");
-                        // pw.close();
+                      
         
                     }
                     catch(Exception ex){}
@@ -200,9 +194,7 @@ public class AllStudentInfo {
                         String credit = Character.toString(copy.charAt(1));
                         String grade = Character.toString(copy.charAt(0));
                         String status = Character.toString(copy.charAt(2));
-                        // gradesArray.add(count, grade);
-                        // creditsArray.add(count, credit);
-                        // count++;
+                      
 
                         if (copy.charAt(2) == 'I'){
 
@@ -272,11 +264,7 @@ public class AllStudentInfo {
                             pw.close();
                         }
                         
-                        // File f = new File(newPath + "/" + userID + "AllSummer" + semesterYear + "Info.txt");
-                        // PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
-                        // pw.append("\n\n\n " + "SUMMER " + semesterYear.toUpperCase());
-                        // pw.append("\n" +" ------- " + courseName + " ------- Grade: " + grade + " ------- Credits: " + credit + " ------- Status: " + status + " ------- ");
-                        // pw.close();
+                      
         
                     }
                     catch(Exception ex){}
@@ -301,9 +289,7 @@ public class AllStudentInfo {
                         String credit = Character.toString(copy.charAt(1));
                         String grade = Character.toString(copy.charAt(0));
                         String status = Character.toString(copy.charAt(2));
-                        // gradesArray.add(count, grade);
-                        // creditsArray.add(count, credit);
-                        // count++;
+                    
 
                         if (copy.charAt(2) == 'I'){
 
@@ -373,11 +359,7 @@ public class AllStudentInfo {
                             pw.close();
                         }
                         
-                        // File f = new File(newPath + "/" + userID + "AllSpring" + semesterYear + "Info.txt");
-                        // PrintWriter pw = new PrintWriter(new FileOutputStream(f, true));
-                        // pw.append("\n\n\n " + "SPRING " + semesterYear.toUpperCase());
-                        // pw.append("\n" +" ------- " + courseName + " ------- Grade: " + grade + " ------- Credits: " + credit + " ------- ");
-                        // pw.close();
+                       
         
                     }
                     catch(Exception ex){}

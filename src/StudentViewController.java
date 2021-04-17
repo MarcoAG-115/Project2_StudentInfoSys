@@ -40,7 +40,7 @@ public class StudentViewController implements ActionListener{
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       frame.add(panel);
       frame.setSize(420, 420);
-      //frame.setLayout(null);
+      
 
       panel.setLayout(null);
 
@@ -54,29 +54,14 @@ public class StudentViewController implements ActionListener{
       tButton.addActionListener(this);
       panel.add(tButton);
 
-      //frame.setVisible(true);
       
-      //subframe.setSize(300, 300);
-      //subframe.setLayout(null);
-      
-      //menubar.add(studentInfo);
-      //menubar.add(transcript);
       studentInfo.add(f);
       
-      //frame.setJMenuBar(menubar);
+      
 
       frame.setVisible(true);
       
-      // f.addActionListener(new ActionListener(){
-      //       public void actionPerformed(ActionEvent e)
-      //       {
-      //           subframe.setVisible(true);
-      //       }
-      // });
-
-      //JOptionPane.showMessageDialog(null, user, "stuff " + "more ", JOptionPane.INFORMATION_MESSAGE);
-       
-      //transcript.addActionListener(this);
+      
    
    }
 
@@ -87,10 +72,10 @@ public class StudentViewController implements ActionListener{
       
       if (e.getSource() == infoButton){
 
-         //frame.dispose();
+         
 
          AllStudentInfo allStudentInfo = new AllStudentInfo(userID);
-         //DisplayInfo displayInfo = new DisplayInfo(userID);
+         
          //JOptionPane.showMessageDialog(null, userID, "stuff " + "more ", JOptionPane.INFORMATION_MESSAGE);
 
      }
