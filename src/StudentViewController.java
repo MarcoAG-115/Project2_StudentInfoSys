@@ -1,3 +1,7 @@
+//Project 2 Group 11 Student Information System
+//COMP 3700
+//04-18-2021
+//Description: Interface where a student can choose to compile info and / or to display info.
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.Font;
@@ -13,10 +17,14 @@ import java.awt.event.ActionListener;
 
 public class StudentViewController implements ActionListener{
 
+   //Initializes variables for UI elements.
    private static JButton infoButton;
    private static JButton tButton;
+
+   //Initializes variable that will store parameter (student ID).
    public String userID;
-    
+
+   //Initializes and creates a UI window.
    JFrame frame = new JFrame("Main Frame");
    JFrame subframe = new JFrame("Sub Frame");
    JLabel label = new JLabel("Welcome to your Student View.");
@@ -27,11 +35,14 @@ public class StudentViewController implements ActionListener{
    JPanel panel = new JPanel();
    
    
-
+   //Represents the initial student view and allows a user to run the 
+   //display info and gather info operations.
    StudentViewController(String user){
 
+      //Assigns parameter to userID so it can be used outside of StudentViewController.
       userID = user;
-   
+      
+      //Sets up UI window dimensions.
       label.setBounds(100, 0, 200, 50);
       label.setFont(new Font(null, Font.PLAIN, 12));
    
@@ -44,6 +55,7 @@ public class StudentViewController implements ActionListener{
 
       panel.setLayout(null);
 
+      //Creates UI elements that prompt user and accept user inputs.
       infoButton = new JButton("Gather Info");
       infoButton.setBounds(100, 50, 200, 25);
       infoButton.addActionListener(this);
@@ -66,10 +78,12 @@ public class StudentViewController implements ActionListener{
    }
 
 
-
+   //This method checks for the user's button press. It calls the class that
+   //corresponds with the prompt and button that was selected.
    @Override
    public void actionPerformed(ActionEvent e) {
       
+      //Calls the class that contains the gather info operation.
       if (e.getSource() == infoButton){
 
          
@@ -80,6 +94,7 @@ public class StudentViewController implements ActionListener{
 
      }
 
+     //Calls the class that contains the display info operation.
      if (e.getSource() == tButton){
 
          DisplayInfo displayInfo = new DisplayInfo(userID);

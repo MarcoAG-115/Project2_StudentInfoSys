@@ -1,3 +1,7 @@
+//Project 2 Group 11 Student Information System
+//COMP 3700
+//04-18-2021
+//Description: Displays all info for a student in a window.
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileFilter;
@@ -18,25 +22,30 @@ import javax.swing.JTextPane;
 
 public class DisplayInfo {
 
-    
+    //Initializes variable where parameter will be stored (student ID).
     public String userID;
     
+    //Initializes and creates UI window for displaying all student info.
     JPanel panel = new JPanel();
     JFrame frame = new JFrame();
     JTextPane tp = new JTextPane();
 
+    //Method / operation dedicated to displaying all student info
+    //organized by semesters.
     public void showInfo(String userID){
 
+        //Sets up dimensions for UI window.
         frame.add(panel);
         frame.setSize(950, 850);
 
         panel.setLayout(null);
 
 
-        
+        //Files are read and organized within the directory before reading contents.
         StringBuilder sb = new StringBuilder();
         String allInfo = "";
         try{
+            //The path for the needed files and directories are found and assigned to path variables.
             Path p1 = Paths.get("AdminLogin.txt");
             Path p2 = Paths.get((p1.toAbsolutePath()).toString());
             //String newPath = p2.getParent() + "/src/" + userID + "/";
@@ -54,6 +63,7 @@ public class DisplayInfo {
             };
             listOfFiles = folder.listFiles(fileFilter);
 
+            //Comparator is used to sort files according to their name (semester).
             Arrays.sort(listOfFiles, new Comparator()
             {
                 @Override
@@ -76,6 +86,8 @@ public class DisplayInfo {
                 }
             });
 
+            //The directory containing files that represent each semester is read
+            //along with the files' contents.
             for (File file : listOfFiles){
 
                 if (file.isFile()){
@@ -99,6 +111,8 @@ public class DisplayInfo {
         }
         catch(Exception ex){}
 
+        //Text pane UI element dimensions and details are set up
+        //and applied.
         Font font = new Font("", Font.BOLD, 20);
         tp.setFont(font);
 
@@ -117,6 +131,8 @@ public class DisplayInfo {
         frame.setVisible(true);
     }
 
+    //Takes student ID as a parameter from previous classes.
+    //Calls showInfo.
     DisplayInfo(String user){
 
         userID = user;

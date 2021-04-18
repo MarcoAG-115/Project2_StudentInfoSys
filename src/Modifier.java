@@ -1,3 +1,7 @@
+//Project 2 Group 11 Student Information System
+//COMP 3700
+//04-18-2021
+//Description: Interface where admin user can change course and / or grade status.
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -19,6 +23,7 @@ import javax.swing.JTextField;
 
 public class Modifier implements ActionListener {
 
+    //Initializes variables needed to create UI elements.
     private static JLabel askForID;
     private static JTextField studentID;
     private static JLabel askForCourse;
@@ -29,18 +34,23 @@ public class Modifier implements ActionListener {
     private static JTextField status;
     private static JButton changeGradeButton;
 
+    //Initializes and sets up variables with the current month and year values.
     Date date = new Date();
     LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     int year = localDate.getYear();
     int month = localDate.getMonthValue();
     String currentSeason = "";
 
+    //Initializes and creates UI window.
     JFrame frame = new JFrame();
     JLabel label = new JLabel("Change Grade");
     JPanel panel = new JPanel();
 
+    //Method / operation that allows an administrator / instructor to change
+    //a student's grade and / or course status for the current semester.
     public void changeGrade(){
 
+        //Sets up UI window dimensions.
         label.setBounds(100, 0, 250, 50);
         
 
@@ -53,6 +63,7 @@ public class Modifier implements ActionListener {
 
         panel.setLayout(null);
 
+        //Finds current season / semester and assigns it to currentSeason.
         if ((month <= 12) && (month >= 8)){
 
             currentSeason = "Fall";
@@ -67,6 +78,7 @@ public class Modifier implements ActionListener {
             currentSeason = "Spring";
         }
 
+        //Creates UI elements that prompt the user and accept user inputs.
         askForID = new JLabel("Enter student ID: ");
         askForID.setBounds(200, 100, 165, 25);
         panel.add(askForID);
@@ -107,6 +119,7 @@ public class Modifier implements ActionListener {
         frame.setVisible(true);
     }
 
+    //Calls changeGrade.
     Modifier(){
 
         changeGrade();
@@ -114,19 +127,25 @@ public class Modifier implements ActionListener {
 
     }
 
+    //This method helps changeGrade complete the operation by changing file contents
+    //once it reads in the user's button press.
     @Override
     public void actionPerformed(ActionEvent e) {
         
+        //Initializes and assigns user inputs.
         String id = studentID.getText();
         String cn = course.getText();
         String gd = grade.getText();
         String s = status.getText();
 
+        //Finds paths needed to locate existing files and assigns them to path variables.
         Path p1 = Paths.get("AdminLogin.txt");
         Path p2 = Paths.get((p1.toAbsolutePath()).toString());
         String path = p2.getParent() + "/src/" + id + "/";
         //String path = "/Users/marco/Documents/Documents/COMP_3700/Project/Project2_StudentInfoSys/src/" + id + "/";
 
+        //Changes the contents of the file that is named after the course info entered by the user.
+        //The grade and status can be changed, but everything else remains the same.
         if (e.getSource() == changeGradeButton){
 
             try

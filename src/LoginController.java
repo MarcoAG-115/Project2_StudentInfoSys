@@ -1,3 +1,7 @@
+//Project 2 Group 11 Student Information System
+//COMP 3700
+//04-18-2021
+//Description: Interface where an admin or student user sign in.
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -12,6 +16,7 @@ import javax.swing.JTextField;
 
 public class LoginController implements ActionListener {
 
+    //Initializes variables needed to set up UI elements.
     private static JLabel userLabel;
     private static JTextField userText;
     private static JLabel passwordLabel;
@@ -19,12 +24,14 @@ public class LoginController implements ActionListener {
     private static JButton button;
     private static JLabel success;
 
+    //Initializes and creates UI window.
     JPanel panel = new JPanel();
     JFrame frame = new JFrame();
-    
+
+        //Creates and runs functioning login window.
         LoginController(){
 
-        
+        //UI elements that prompt user and accept inputs are created.
         frame.setSize(400, 200);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
@@ -62,14 +69,22 @@ public class LoginController implements ActionListener {
         
     }
 
+    //This method performs that actual login operation by checking for 
+    //the user's button press.
     @Override
     public void actionPerformed(ActionEvent e) {
-       
+      
+       //Initializes and assigns variables with user inputs.
+       //Sets up temporary variables.
        String user = userText.getText();
        String password = passwordText.getText();
        String copy1 = "";;
        String copy2 = "";
 
+       //User inputs are compared with acceptable logins found in the 
+       //StudentLogins.txt and AdminLogins.txt files. If the user's
+       //inputs match the contents in any of these files then they will
+       //be given access to the corresponding windows (Student or Admin view).
        try
        {
           BufferedReader sl = new BufferedReader(new FileReader("StudentLogins.txt"));

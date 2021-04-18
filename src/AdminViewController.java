@@ -1,3 +1,9 @@
+//Project 2 Group 11 Student Information System
+//COMP 3700
+//04-18-2021
+//Description: Interface where admin user can add a new student with student id, 
+//             first name, and last name. Admin user can choose to navigate to 
+//             add grade interface or change course interface.
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -14,6 +20,7 @@ import javax.swing.JTextField;
 
 public class AdminViewController implements ActionListener{
 
+    //Private variables for UI elements initialized.
     private static JLabel askForID;
     private static JTextField studentID;
     private static JLabel askFirstName;
@@ -26,27 +33,26 @@ public class AdminViewController implements ActionListener{
     private static JButton addGradeButton;
     private static JButton changeGradeButton;
 
-
+    //Creates and initializes UI window elements.
     JFrame frame = new JFrame();
     JLabel label = new JLabel("Welcome to the Administrator Menu.");
     JPanel panel = new JPanel();
 
+    //Method / operation dedicated to adding a new student to the system.
     public void addStudent(){
 
+        //Sets up addStudent UI window dimensions.
         label.setBounds(100, 0, 250, 50);
-        //label.setFont(new Font(null, Font.PLAIN, 25));
 
         frame.add(label);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
         frame.setSize(420, 420);
-        //frame.setLayout(null);
-        //frame.setVisible(true);
 
         panel.setLayout(null);
 
-        //Adding student info to 'database' aka text file
+        //Sets up UI elements that prompt user and receive student info.
         askForID = new JLabel("Enter student ID: ");
         askForID.setBounds(100, 40, 165, 25);
         panel.add(askForID);
@@ -97,6 +103,10 @@ public class AdminViewController implements ActionListener{
         frame.setVisible(true);
     }
 
+    //Calls addStudent method / operation.
+    //This class represents the initial administrator / instructor view.
+    //It allows the user to run the add student, add grade, and change
+    //grade operations.
     AdminViewController(){
 
         addStudent();
@@ -104,13 +114,19 @@ public class AdminViewController implements ActionListener{
 
     }
 
+    //Method that assists addStudent by reading a user's button click as an input.
+    //Completes the actual addStudent process.
     @Override
     public void actionPerformed(ActionEvent e) {
+
+        //Initializes and sets up varaibles for the user given info.
         String id = studentID.getText();
         String fn = studentFN.getText();
         String ln = studentLN.getText();
         String cd = totalCredits.getText();
 
+        //If a user clicks on the "Add Student" button, then any info entered will
+        //be used to add a student in Database.txt.
         if (e.getSource() == addButton){
 
             Path p1 = Paths.get("AdminLogins.txt");
@@ -132,6 +148,8 @@ public class AdminViewController implements ActionListener{
             }
         }
 
+        //If user clicks on "Add Grade" button, then NewCourse is called which
+        //opens a new window.
         if (e.getSource() == addGradeButton){
 
             
@@ -139,6 +157,8 @@ public class AdminViewController implements ActionListener{
 
         }
 
+        //If user clicks on "Change Grade" button, then Modifier is called which
+        //opens a new window.
         if (e.getSource() == changeGradeButton){
 
             

@@ -1,3 +1,9 @@
+//Project 2 Group 11 Student Information System
+//COMP 3700
+//04-18-2021
+//Description: Interface where admin user can add a 
+//             new course with grade, credits, and 
+//             status for a student.
 import java.util.Date;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +23,7 @@ import javax.swing.JTextField;
 
 public class NewCourse implements ActionListener {
 
+    //Initializes variables that will be used for UI elements.
     private static JLabel semester;
     private static JLabel askForID;
     private static JTextField studentID;
@@ -29,20 +36,28 @@ public class NewCourse implements ActionListener {
     private static JLabel askForStatus;
     private static JTextField status;
     private static JButton addButton;
+
+    //Initializes variable that will store the parameter (total credits needed).
     public String totalCredits;
 
+    //Initializes and assigns variables to the current month and year values.
     Date date = new Date();
     LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     int year = localDate.getYear();
     int month = localDate.getMonthValue();
     String currentSeason = "";
     
+    //Initializes and creates a UI window.
     JFrame frame = new JFrame();
     JLabel label = new JLabel("Add Grade");
     JPanel panel = new JPanel();
 
+    //Method / operation dedicated to allowing an administrator / instructor to 
+    //add new course and corresponding info for a student, but only for the current
+    //semester.
     public void addGrade(String totalCredits){
 
+        //UI window dimensions are established.
         label.setBounds(200, 0, 250, 50);
         
 
@@ -55,7 +70,7 @@ public class NewCourse implements ActionListener {
 
         panel.setLayout(null);
 
-
+        //The current season / semester is found and assigned to currentSeason.
         if ((month <= 12) && (month >= 8)){
 
             semester = new JLabel("Fall " + year);
@@ -79,6 +94,7 @@ public class NewCourse implements ActionListener {
             currentSeason = "Spring";
         }
 
+        //UI elements that prompt the user and accept inputs are created.
         askForID = new JLabel("Enter student ID: ");
         askForID.setBounds(200, 100, 165, 25);
         panel.add(askForID);
@@ -127,6 +143,9 @@ public class NewCourse implements ActionListener {
         frame.setVisible(true);
     }
 
+    //Receives the total credits needed to graduate as parameter from previous
+    //classes. Assigns it to totalCredits so it can be used by addGrade.
+    //Calls addGrade.
     NewCourse(String cd){
 
         totalCredits = cd;
@@ -136,20 +155,27 @@ public class NewCourse implements ActionListener {
 
     }
 
+    //This method helps complete the addGrade operation by creating a new file
+    //representing the new course and containing its' corresponding info.
+    //This is done by checking for the user's button press.
     @Override
     public void actionPerformed(ActionEvent e) {
         
+        //Initializes and assigns input values.
         String id = studentID.getText();
         String cn = course.getText();
         String gd = grade.getText();
         String cd = credits.getText();
         String s = status.getText();
 
+        //Finds paths needed to create a student's files in the correct location.
+        //These paths are assigned to path variables.
         Path p1 = Paths.get("AdminLogin.txt");
         Path p2 = Paths.get((p1.toAbsolutePath()).toString());
         String path = p2.getParent() + "/src/" + id + "/";
         //String path = "/Users/marco/Documents/Documents/COMP_3700/Project/Project2_StudentInfoSys/src/" + id + "/";
 
+        //A file is created for the new course and is populated by the entered info.
         if (e.getSource() == addButton){
 
             try
