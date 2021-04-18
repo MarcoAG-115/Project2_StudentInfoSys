@@ -25,7 +25,7 @@ The following extensions were used in the creation of this program:
 - Language Support for Java(TM) by Red Hat
 - Maven for Java by Microsoft
 - Project Manager for Java by Microsoft
-- 
+
 ## Resources & Tutorials
 
 The following resources and guides were used to create the program.
@@ -34,3 +34,7 @@ The following resources and guides were used to create the program.
 - https://www.youtube.com/watch?v=HgkBvwgciB4
 - https://1bestcsharp.blogspot.com/2015/04/java-io-how-to-import-text-from-txt-File-To-A-JTextPane-In-Java.html
 - https://www.santhoshreddymandadi.com/java/java-program-to-fetch-and-sort-files.html
+
+## Demo
+
+https://youtu.be/9gE9a6dxqeI
